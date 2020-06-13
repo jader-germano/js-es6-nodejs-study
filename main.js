@@ -1,17 +1,11 @@
-// Formas de Referenciar tags da Dom QuerySelector
-var inputElement = document.querySelector('input');
-var allInputElements = document.querySelectorAll('input');
+let linkElement = document.createElement('a');
+linkElement.setAttribute('href','https://github.com/jader-germano/study');
 
-console.log(inputElement);
-console.log(allInputElements);
+let textElement = document.createTextNode('Acesso ao repositório deste projeto.');
+linkElement.appendChild(textElement);
 
-// Formas de Referenciar tags da Dom QuerySelector
-var btnElement = document.querySelector('button.botao');
+let containerElement = document.querySelector('#app');
+containerElement.appendChild(linkElement);
 
-btnElement.onclick = function() {
-    let text = inputElement.value;
-    alert(text);
-}
-console.log(inputElement);
-console.log(allInputElements)
-
+/**
+ *  <a href="https://github.com/jader-germano/study">Acesso ao repositório do projeto</a>*/
