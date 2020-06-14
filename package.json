@@ -17,5 +17,8 @@
   },
   "scripts": {
     "dev": "webpack --mode=development -w"
+  },
+  "dependencies": {
+    "axios": "^0.19.2"
   }
 }

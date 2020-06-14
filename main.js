@@ -1,15 +1,16 @@
-const promise = () => new Promise((resolve, reject) => {
-    setTimeout(() => {resolve('OK')}, 2000)
-})
+import axios from 'axios';
 
-/*
- promise().then(response => {
- console.log(response)
- }).catch(err => err);
- */
-async function execute() {
-    const response = await promise();
-    console.log(response)
+class Api {
+    static async getUSerInfo(username) {
+        try {
+            const response = await axios.get(`https://api.github.com/users/${username}`);
+            console.log(response);
+
+        } catch (e) {
+            console.log('erro na api')
+        }
+    }
 }
 
-execute()
+Api.getUSerInfo('jader-germano')
+Api.getUSerInfo('jadersgermano')
