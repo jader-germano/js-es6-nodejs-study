@@ -1,55 +1,50 @@
-var nomes = ["Diego", "Jader", "amendoim", "Lucas"];
+let listElement = document.querySelector('#app ul');
+let inputElement = document.querySelector('#app input');
+let buttonElement = document.querySelector('#app button');
 
-let appElement = document.querySelector('#app');
+let todos = JSON.parse(localStorage.getItem('list_todos')) || [];
 
-let inputElement = document.createElement('input');
+function renderTodos() {
+    listElement.innerHTML = '';
+    for (let todo of todos) {
+        let todoElement = document.createElement('li');
+        let todoText = document.createTextNode(todo);
 
-let btnElement = document.createElement('button');
+        let linkElement = document.createElement('a');
+        linkElement.setAttribute('href', '#');
 
-async function loadList() {
-    let ulElements = document.querySelector('#list');
-    ulElements && appElement.removeChild(ulElements);
+        let index = todos.indexOf(todo);
+        linkElement.setAttribute('onclick', `deleteTodo(${index})`);
+        let linkText = document.createTextNode('Excluir');
 
-    let itemUlElement = document.createElement('ul');
-    itemUlElement.setAttribute('id', 'list');
-    for (let nome of nomes) {
-        let itemLiElement = document.createElement('li');
-        let textElement = document.createTextNode(nome);
-        itemLiElement.appendChild(textElement);
-        itemUlElement.appendChild(itemLiElement);
-        appElement.appendChild(itemUlElement);
+        linkElement.appendChild(linkText);
+
+        todoElement.appendChild(todoText);
+        todoElement.appendChild(linkElement);
+
+        listElement.appendChild(todoElement)
+        saveToStorage();
     }
 }
+renderTodos();
 
-function createButton() {
-    inputElement.setAttribute('text', 'text');
-    inputElement.setAttribute('name', 'name');
-    btnElement.style.width = 90;
-    btnElement.style.color = '#3e3c3c';
-    btnElement.style.height = 30;
-    btnElement.style.padding = 15;
-    btnElement.style.borderStyle = 'none';
-    btnElement.style.margin = 20;
-    btnElement.style.borderRadius = '15%';
-    btnElement.style.backgroundColor = '#d4cfcf';
-    let textInputElement = document.createTextNode('Insira');
-    btnElement.appendChild(textInputElement);
-}
+function addTodo() {
+    let todoText = inputElement.value;
 
-btnElement.onclick = async function () {
-
-    if (!inputElement.value) {
-        alert('Preencha o campo de texto');
-        return
-    }
-    nomes = [...nomes, inputElement.value];
+    todos.push(todoText);
     inputElement.value = '';
-    await loadList();
+    renderTodos();
+    saveToStorage();
 }
 
-appElement.appendChild(inputElement);
+buttonElement.onclick = addTodo;
 
-appElement.appendChild(btnElement);
 
-loadList();
-createButton();
+function deleteTodo(index) {
+    todos.splice(index, 1);
+    renderTodos();
+    saveToStorage();}
+
+function saveToStorage() {
+    localStorage.setItem('list_todos', JSON.stringify(todos ))
+}
