@@ -1,0 +1,16 @@
+{
+  "name": "study-js-es6-nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jader-germano/study.git",
+  "author": "jadergermano <jader.germano@icloud.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2"
+  },
+  "scripts": {
+    "dev": "babel ./main.js -o ./bundle.js -w"
+  }
+}
