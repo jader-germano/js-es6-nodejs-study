@@ -1,5 +1,6 @@
-import * as opr from './functions'
+import ClassUSer, { idade } from './user';
 
-console.log(opr.sum(1, 2))
-console.log(opr.sub(3, 1))
-console.log(opr.mult(3, 1))
+ClassUSer.information();
+console.log(idade)
+ClassUSer.idade = 25;
+console.log(ClassUSer.idade)
