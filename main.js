@@ -1,17 +1,47 @@
-const arr = [1, 3, 4, 5, 8, 9];
+//REST
+const user = {
+    name: 'Jader',
+    age: '27',
+    address: {
+        city: 'Brasília',
+        estate: 'DF',
+    }
+};
 
-const newArr = arr.map((item, index) => item + index);
+const { name, ...restUSer } = user;
+console.log(name);
+console.log(restUSer);
 
-console.log(newArr);
+const arr = [1, 2, 3, 4];
 
-const sum = arr.reduce((total, next) => total + next);
+const [a, b, ...c] = arr;
+console.log(a);
+console.log(b);
+console.log(c);
 
-console.log(sum);
+function sum(a, ...params) {
+    return a + params.reduce((total, next) => total + next);
+}
 
-const filter = arr.filter((item) => item % 2 === 0);
+console.log(sum(1, 2, 3, 4, 5, 6, 7, 8));
 
-console.log(filter);
+// SPREAD
 
-const find = arr.find((item) => item === 2);
+const arr1 = [1, 2, 3, 4];
+const arr2 = [5, 6, 7, 8, 9];
 
-console.log(find);
+const arr3 = [...arr, ...arr1, ...arr2];
+console.log(arr3);
+
+const user2 = {
+    name: 'Philipe',
+    age: '27',
+    address: {
+        city: 'Brasília',
+        estate: 'DF',
+    }
+};
+
+const user3 = {...user2, name: 'Germano'};
+
+console.log(user3);
