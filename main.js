@@ -1,29 +1,6 @@
-class List {
-    constructor() {
-        this.data = [];
-    }
-
-    add(data) {
-        this.data.push(data);
-        console.log(this.data)
+class Matematica {
+    static sum(a,b) {
+        return a + b;
     }
 }
-
-class TodoList extends List {
-    constructor() {
-        super();
-        this.user = 'Jader'
-    }
-
-    showUser() {
-        console.log(this.user)
-    }
-}
-
-const MinhaLista = new TodoList();
-
-document.getElementById('novotodo').onclick = function () {
-    MinhaLista.add('Novo Todo');
-}
-
-MinhaLista.showUser();
+console.log(Matematica.sum(1,2))
